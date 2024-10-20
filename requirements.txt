@@ -1,0 +1,6 @@
+nltk
+streamlit
+fastapi
+scikit-learn
+uvicorn
+numpy
