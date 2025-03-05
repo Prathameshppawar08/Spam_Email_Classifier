@@ -6,9 +6,17 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
 
-# Download NLTK datasets for stopwords and punkt if not already present
+# Download NLTK datasets for punkt and stopwords if they are not already downloaded
 nltk.download('punkt', quiet=True)
 nltk.download('stopwords', quiet=True)
+
+# Ensure the punkt and stopwords are downloaded
+try:
+    stopwords.words('english')
+    word_tokenize('test')
+except LookupError:
+    st.error("Required NLTK resources not found. Please try again later.")
+    exit()  # Exit if resources are missing
 
 ps = PorterStemmer()
 
