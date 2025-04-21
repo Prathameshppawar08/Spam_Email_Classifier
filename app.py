@@ -6,19 +6,22 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
 import nltk
-import ssl
+import os
 
-# Handle SSL certificate verification for environments with SSL issues
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    pass
-else:
-    ssl._create_default_https_context = _create_unverified_https_context
+# Define the NLTK data directory
+nltk_data_dir = os.path.join(os.getcwd(), 'nltk_data')
 
-# Download necessary NLTK data
-nltk.download('stopwords')
-nltk.download('punkt')
+# Create the directory if it doesn't exist
+if not os.path.exists(nltk_data_dir):
+    os.makedirs(nltk_data_dir)
+
+# Set the NLTK data path
+nltk.data.path.append(nltk_data_dir)
+
+# Download required NLTK data packages
+nltk.download('stopwords', download_dir=nltk_data_dir)
+nltk.download('punkt', download_dir=nltk_data_dir)
+
 
 # Download NLTK datasets for punkt and stopwords if they are not already downloaded
 nltk.download('punkt', quiet=True)
