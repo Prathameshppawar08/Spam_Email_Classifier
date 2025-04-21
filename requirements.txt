@@ -1,6 +1,5 @@
-nltk
 streamlit
-fastapi
+nltk
 scikit-learn
-uvicorn
+pandas
 numpy
