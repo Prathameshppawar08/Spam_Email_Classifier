@@ -5,6 +5,20 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
+import nltk
+import ssl
+
+# Handle SSL certificate verification for environments with SSL issues
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+# Download necessary NLTK data
+nltk.download('stopwords')
+nltk.download('punkt')
 
 # Download NLTK datasets for punkt and stopwords if they are not already downloaded
 nltk.download('punkt', quiet=True)
